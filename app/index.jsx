@@ -1,14 +1,27 @@
-import { StyleSheet, Text, View, Image } from "react-native";
-import Icon from "../assets/favicon.png";
+import { StyleSheet, Text } from "react-native";
 import { Link } from "expo-router";
+import ThemedView from "../components/ThemedView";
+import ThemedLogo from "../components/ThemedLogo";
+import Spacer from "../components/Spacer";
+import ThemedText from "../components/ThemedText";
 const Home = () => {
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Home</Text>
-      <Image source={Icon} style={styles.img} />
-      <Link href="/about">About Page</Link>
-      <Link href="/contact">Contact Page</Link>
-    </View>
+    <ThemedView style={styles.container}>
+      <ThemedLogo />
+      <Spacer height={20} />
+      <ThemedText style={styles.title} title={true}>
+        The Number 1
+      </ThemedText>
+      <Spacer height={10} />
+      <ThemedText>Reading list App</ThemedText>
+      <Spacer />
+      <Link style={styles.link} href="/login">
+        <ThemedText>Login Page</ThemedText>
+      </Link>
+      <Link style={styles.link} href="/register">
+        <ThemedText>Register Page</ThemedText>
+      </Link>
+    </ThemedView>
   );
 };
 
@@ -25,9 +38,10 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     color: "red",
   },
-  img: {
-    margin: 10,
-    width: 200,
-    height: 200,
+  link: {
+    color: "#007AFF",
+    textDecorationLine: "underline",
+    fontSize: 16,
+    fontWeight: "500",
   },
 });
