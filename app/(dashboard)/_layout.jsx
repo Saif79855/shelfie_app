@@ -69,6 +69,7 @@ const DashBoardLayout = () => {
             ),
           }}
         />
+        <Tabs.Screen name="books/[id]" options={{ href: null }} />
       </Tabs>
     </UserOnly>
   );

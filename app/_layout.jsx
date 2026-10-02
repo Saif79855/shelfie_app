@@ -6,6 +6,12 @@ import Colors from "../constants/colors";
 import { UserProvider } from "../context/UserContext";
 import { BooksProvider } from "../context/BooksContext";
 
+import storage from "local-storage-fallback";
+
+if (typeof window !== "undefined" && !window.localStorage) {
+  window.localStorage = storage;
+}
+
 const RootLayout = () => {
   const colorScheme = useColorScheme();
   const theme = Colors[colorScheme] ?? Colors.light;
@@ -28,9 +34,14 @@ const RootLayout = () => {
           >
             <Stack.Screen
               name="index"
-              options={{ headerTitleAlign: "center", title: "Home" }}
+              options={{
+                headerTitleAlign: "center",
+                title: "Home",
+              }}
             />
+
             <Stack.Screen name="(auth)" options={{ headerShown: false }} />
+
             <Stack.Screen name="(dashboard)" options={{ headerShown: false }} />
           </Stack>
         </SafeAreaProvider>
